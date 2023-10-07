@@ -7,13 +7,6 @@ import NewListDialog from "./Components/NewListDialog";
 import MenuBar from "./Components/MenuBar";
 import Main from "./Components/Main";
 
-// const toDo = {
-//   category: "",
-//   Icon:null,
-//   id: "",
-//   tasks: [],
-// };
-
 function App() {
   const [isOpen, setIsOpen] = useState(false);
   function handleOpen() {

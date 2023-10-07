@@ -1,9 +1,4 @@
 import * as allIcons from "@mui/icons-material";
-// import Dexie from "dexie";
-// const db = new Dexie("myDatabase");
-// db.version(1).stores({
-//   toDoListStore: "++id, catogory, icon,tasks",
-// });
 
 function fetchIcon(icon) {
   const filteredIcon = Object.entries(allIcons).filter(([name, Icon]) => {

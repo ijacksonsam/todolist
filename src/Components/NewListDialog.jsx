@@ -20,6 +20,7 @@ import {
 import { useState } from "react";
 import { useToDoList } from "../ToDoListProvider";
 import { fetchIcon } from "../utils";
+import { db } from "../db";
 
 const initialIcons = Object.entries(allIcons).map(([name, Icon]) => {
   return { name, Icon };
@@ -48,15 +49,18 @@ export default function NewListDialog({ open, setIsOpen }) {
   }
 
   async function handleSubmit(e) {
-    e.preventDefault();
-    const newToDo = {
-      category,
-      icon,
-      id: crypto.randomUUID(),
-    };
-    setToDoList((toDoList) => [...toDoList, newToDo]);
-    // await db.toDoListStore.add(newToDo);
-    handleClose();
+    try {
+      e.preventDefault();
+      const newToDo = {
+        category,
+        icon,
+      };
+      const id = await db.toDoList.add(newToDo);
+      setToDoList((toDoList) => [...toDoList, { ...newToDo, id }]);
+      handleClose();
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   return (
