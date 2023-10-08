@@ -21,6 +21,7 @@ import { useState } from "react";
 import { useToDoList } from "../ToDoListProvider";
 import { fetchIcon } from "../utils";
 import { db } from "../db";
+import { blue } from "@mui/material/colors";
 
 const initialIcons = Object.entries(allIcons).map(([name, Icon]) => {
   return { name, Icon };
@@ -80,7 +81,7 @@ export default function NewListDialog({ open, setIsOpen }) {
       <DialogTitle sx={{ textAlign: "center" }}>Create a new List</DialogTitle>
 
       <DialogContent>
-        <DialogContentText>
+        <DialogContentText sx={{ mb: 2 }}>
           Enter the Category and select the Icon
         </DialogContentText>
 
@@ -112,10 +113,10 @@ export default function NewListDialog({ open, setIsOpen }) {
             />
           </FormControl>
         </Box>
-        <Grid container columns={10} spacing={0.5}>
+        <Grid container columns={8} spacing={0.5}>
           {icons.map(({ name, Icon }, ind) => {
-            return ind >= 20 ? null : (
-              <Grid item key={ind} xs={1}>
+            return ind >= 24 ? null : (
+              <Grid item key={ind} xs={2} sm={1}>
                 <Box
                   display={"flex"}
                   flexDirection={"column"}
@@ -129,7 +130,7 @@ export default function NewListDialog({ open, setIsOpen }) {
                     borderRadius: "9px",
                     minWidth: "50px",
                     "&:hover": {
-                      backgroundColor: "red",
+                      backgroundColor: blue[100],
                       cursor: "pointer",
                     },
                   }}

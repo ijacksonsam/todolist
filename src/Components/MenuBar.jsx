@@ -39,8 +39,11 @@ export default function MenuBar() {
 
   return (
     <Box
-      sx={{ display: "flex", flexDirection: "column" }}
-      borderRight={"1px solid"}
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        height: "100%",
+      }}
     >
       {toDoList.length > 0 ? (
         toDoList.map(({ id, category, icon }) => {
@@ -52,7 +55,7 @@ export default function MenuBar() {
               sx={{
                 display: "grid",
                 transition: "all 0.3s",
-                border: "1px solid",
+                borderBottom: "1px solid",
                 gridTemplateColumns: "1fr 4fr 1fr",
                 alignItems: "center",
                 "&:hover": {
@@ -82,7 +85,9 @@ export default function MenuBar() {
           );
         })
       ) : (
-        <Typography>Add A New Category</Typography>
+        <Typography variant="h6" sx={{ textAlign: "center", my: "auto" }}>
+          Add A New Category
+        </Typography>
       )}
     </Box>
   );

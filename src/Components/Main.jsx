@@ -14,6 +14,7 @@ import { AddCircleOutline, Delete, Edit } from "@mui/icons-material";
 import { useToDoList } from "../ToDoListProvider";
 import { useEffect, useRef, useState } from "react";
 import { db } from "../db";
+import { grey } from "@mui/material/colors";
 
 export default function Main() {
   const { selectedCategory, setSelectedCategory } = useSelectedCategory();
@@ -46,13 +47,25 @@ export default function Main() {
 
   if (!selectedCategory)
     return (
-      <Box p={1}>
-        <Typography variant="h2">MAIN</Typography>
+      <Box p={1} display={"flex"} height={"100%"}>
+        <Typography
+          variant="h4"
+          sx={{ textAlign: "center", flex: 1, alignSelf: "center" }}
+        >
+          Select a category
+        </Typography>
       </Box>
     );
 
   return (
-    <Box p={1}>
+    <Box
+      sx={{
+        px: 2,
+
+        pt: { xs: 2 },
+        overflow: "auto",
+      }}
+    >
       <Typography variant="h3" sx={{ textTransform: "uppercase" }}>
         {selectedCategory.category}
       </Typography>
